@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center" >
+
+    <Button
+        android:id="@+id/stopAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="false"
+        android:text="stop alarm" />
+
+    <TextView
+        android:id="@+id/medNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/stopAlarm"
+        android:layout_alignBottom="@+id/stopAlarm"
+        android:layout_alignEnd="@+id/stopAlarm"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignStart="@+id/stopAlarm"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="24dp"
+        android:width="100dp"
+        android:height="50dp"
+        android:autoSizeMaxTextSize="150sp"
+        android:autoSizeMinTextSize="25sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:text="TextView"
+        android:textSize="30sp" />
+
+</RelativeLayout>
