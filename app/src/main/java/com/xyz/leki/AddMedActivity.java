@@ -139,8 +139,14 @@ public class AddMedActivity extends AppCompatActivity {
             j++;
             addAlarm(selectedInterval, am, pendingIntent, alarmTime);
         }
+        TextView qt = findViewById(R.id.quantityEditText);
+        TextView bc = findViewById(R.id.barcodeTextView);
+        String qtStr = qt.getText().toString();
         int quantity = 0;
-        String barcode = "";
+        if (!qtStr.isEmpty()) {
+            quantity = Integer.parseInt(qtStr);
+        }
+        String barcode = bc.getText().toString();
         Medicine med = new Medicine(medName, alarmTimes, requestCodes, selectedInterval != INTERVAL_ONCE, quantity, barcode);
         MedicineList.addMedicine(med);
         writeArray();
