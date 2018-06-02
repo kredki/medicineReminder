@@ -21,12 +21,17 @@ public class MedicineList {
         }
     }
 
-    private MedicineList() {
-        this.medicineList = new ArrayList<>();
-    }
-
     public static List<Medicine> getMedicineList() {
         return medicineList;
+    }
+
+    public static int getSize() { return medicineList.size(); }
+
+    public static Medicine getMed(int index) {
+        if(index < medicineList.size())
+            return medicineList.get(index);
+        else
+            return null;
     }
 
     public static void setMedicineList(List<Medicine> medicineList) {
@@ -35,5 +40,9 @@ public class MedicineList {
 
     public static void addMedicine(Medicine med) {
         MedicineList.medicineList.add(med);
+    }
+
+    private MedicineList() {
+        this.medicineList = new ArrayList<>();
     }
 }

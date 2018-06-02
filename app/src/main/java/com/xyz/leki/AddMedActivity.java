@@ -113,6 +113,7 @@ public class AddMedActivity extends AppCompatActivity {
         //Create a new PendingIntent and add it to the AlarmManager
         Intent intent = new Intent(this, AlarmReceiverActivity.class);
         intent.putExtra("MED_NAME", medName);
+        intent.putExtra("MED_NUMBER", MedicineList.getSize());
 
 
         /*

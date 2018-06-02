@@ -1,6 +1,7 @@
 package com.xyz.leki;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
@@ -13,6 +14,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.xyz.leki.Resource.Medicine;
+import com.xyz.leki.Resource.MedicineList;
 
 import java.io.IOException;
 
@@ -29,7 +33,11 @@ public class AlarmReceiverActivity extends AppCompatActivity {
         setContentView(R.layout.alarm);
 
         TextView medNameTextView = findViewById(R.id.medNameTextView);
-        medNameTextView.setText(getIntent().getStringExtra("MED_NAME"));
+        Intent intent = getIntent();
+        int medIndex = intent.getIntExtra("MED_NUMBER", 0);
+        Medicine med = MedicineList.getMed(medIndex);
+        //medNameTextView.setText(intent.getStringExtra("MED_NAME"));
+        medNameTextView.setText(med.getName() + " ilość leku = " + med.getQuantity());
 
         Button stopAlarm = (Button) findViewById(R.id.stopAlarm);
         stopAlarm.setOnTouchListener(new View.OnTouchListener() {
