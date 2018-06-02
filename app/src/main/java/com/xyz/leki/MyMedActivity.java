@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,17 +28,23 @@ public class MyMedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_med);
 
         list = (ListView) findViewById(R.id.myMedTimesListView);
-
+        TextView barcode = findViewById(R.id.barcodeEditText);
+        NumberPicker quantity = findViewById(R.id.quantityNumberPicker);
 
         int nr = getIntent().getIntExtra("MED_NUMBER", -1);
+        Medicine med = null;
         if (nr != -1) {
-            setList(nr);
+            med = MedicineList.getMedicineList().get(nr);
+            setList(nr, med);
+            barcode.setText(med.getBarcode());
+            quantity.setMaxValue(10000);
+            quantity.setMinValue(0);
+            quantity.setValue(med.getQuantity());
         }
     }
 
-    private void setList(int nr) {
+    private void setList(int nr, Medicine med) {
         TextView medNameTextView = findViewById(R.id.myMedNameTextView);
-        Medicine med = MedicineList.getMedicineList().get(nr);
         medNameTextView.setText(med.getName());
 
         List<String> strings = new ArrayList<>();

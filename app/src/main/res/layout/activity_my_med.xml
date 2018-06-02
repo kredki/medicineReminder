@@ -10,6 +10,7 @@
         android:id="@+id/myMedNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,9 +20,37 @@
     <ListView
         android:id="@+id/myMedTimesListView"
         android:layout_width="368dp"
-        android:layout_height="468dp"
+        android:layout_height="315dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/barcodeEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="barcode"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/myMedTimesListView"
+        app:layout_constraintEnd_toStartOf="@+id/quantityNumberPicker"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myMedNameTextView" />
+
+    <NumberPicker
+        android:id="@+id/quantityNumberPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="95dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/myMedTimesListView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/barcodeEditText"
+        app:layout_constraintTop_toBottomOf="@+id/myMedNameTextView" />
+
 </android.support.constraint.ConstraintLayout>
