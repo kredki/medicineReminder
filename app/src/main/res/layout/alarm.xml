@@ -37,4 +37,14 @@
         android:text="TextView"
         android:textSize="30sp" />
 
+    <Button
+        android:id="@+id/subtractMedQtButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/medNameTextView"
+        android:layout_below="@+id/stopAlarm"
+        android:layout_marginTop="28dp"
+        android:onClick="subtractMedQt"
+        android:text="Zmniejsz ilość leko o 1" />
+
 </RelativeLayout>

@@ -51,6 +51,10 @@ public class AlarmReceiverActivity extends AppCompatActivity {
         playSound(this, getAlarmUri());
     }
 
+    public void subtractMedQt(View view) {
+        //todo
+    }
+
     private void playSound(Context context, Uri alert) {
         mMediaPlayer = new MediaPlayer();
         try {
