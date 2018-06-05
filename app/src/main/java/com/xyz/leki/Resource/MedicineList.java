@@ -34,6 +34,10 @@ public class MedicineList {
             return null;
     }
 
+    public static void setMedicine(int index, Medicine med) {
+        medicineList.set(index, med);
+    }
+
     public static void setMedicineList(List<Medicine> medicineList) {
         MedicineList.medicineList = medicineList;
     }
