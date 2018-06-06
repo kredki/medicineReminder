@@ -103,27 +103,10 @@ public class AddMedActivity extends AppCompatActivity {
         TextView medNameTextView = findViewById(R.id.medNameTextView);
         String medName = medNameTextView.getText().toString();
 
-        //Intent ii = new Intent(this.getApplicationContext(), AddMedActivity.class);
-        //showNotification(this, medName, "Weź pigułkę", ii);
-
-        //Create an offset from the current time in which the alarm will go off.
-        //cal = Calendar.getInstance();
-        //cal.add(Calendar.SECOND, 5);
-
         //Create a new PendingIntent and add it to the AlarmManager
         Intent intent = new Intent(this, AlarmReceiverActivity.class);
         intent.putExtra("MED_NAME", medName);
         intent.putExtra("MED_NUMBER", MedicineList.getSize());
-
-
-        /*
-        TimePicker timePicker = findViewById(R.id.alermTimePicker);
-        timePicker.setIs24HourView(true);
-        int hour = timePicker.getHour();
-        int minutes = timePicker.getMinute();
-        cal.set(Calendar.HOUR_OF_DAY, hour);
-        cal.set(Calendar.MINUTE, minutes);
-        */
 
         AlarmManager am =
                 (AlarmManager) getSystemService(Activity.ALARM_SERVICE);
@@ -183,36 +166,4 @@ public class AddMedActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-    /*
-    public void showNotification(Context context, String title, String body, Intent intent) {
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        int notificationId = 1;
-        String channelId = "channel-01";
-        String channelName = "Channel Name";
-        int importance = NotificationManager.IMPORTANCE_HIGH;
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel mChannel = new NotificationChannel(
-                    channelId, channelName, importance);
-            notificationManager.createNotificationChannel(mChannel);
-        }
-
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, channelId)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(title)
-                .setContentText(body);
-
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addNextIntent(intent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(
-                0,
-                PendingIntent.FLAG_UPDATE_CURRENT
-        );
-        mBuilder.setContentIntent(resultPendingIntent);
-
-        notificationManager.notify(notificationId, mBuilder.build());
-    }
-    */
 }

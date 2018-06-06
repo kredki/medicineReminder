@@ -31,17 +31,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         medicineList = new ArrayList<>();
-        /*/
-        List <Long> reqCodes = new ArrayList<>();
-        reqCodes.add(1L);
-        List<Calendar> calList = new ArrayList<>();
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, 10);
-        cal.set(Calendar.MINUTE, 20);
-        calList.add(cal);
-        medicineList.add(new Medicine("Apap2", reqCodes, calList, true));
-        writeArray();
-        /*/
         MedicineList.getInstance();
         medicineList = null;
         medicineList = read(this);
