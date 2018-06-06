@@ -18,11 +18,19 @@ import android.widget.TextView;
 import com.xyz.leki.Resource.Medicine;
 import com.xyz.leki.Resource.MedicineList;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.List;
 
 public class AlarmReceiverActivity extends AppCompatActivity {
 
     private MediaPlayer mMediaPlayer;
+    private Medicine med;
+    private TextView medNameTextView;
+    private int medIndex;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,11 +40,10 @@ public class AlarmReceiverActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.alarm);
 
-        TextView medNameTextView = findViewById(R.id.medNameTextView);
+        medNameTextView = findViewById(R.id.medNameTextView);
         Intent intent = getIntent();
-        int medIndex = intent.getIntExtra("MED_NUMBER", 0);
-        Medicine med = MedicineList.getMed(medIndex);
-        //medNameTextView.setText(intent.getStringExtra("MED_NAME"));
+        medIndex = intent.getIntExtra("MED_NUMBER", 0);
+        med = MedicineList.getMed(medIndex);
         medNameTextView.setText(med.getName() + " ilość leku = " + med.getQuantity());
 
         Button stopAlarm = (Button) findViewById(R.id.stopAlarm);
@@ -52,7 +59,33 @@ public class AlarmReceiverActivity extends AppCompatActivity {
     }
 
     public void subtractMedQt(View view) {
-        //todo
+        int quantity = med.getQuantity();
+        quantity--;
+        if(quantity < 0)
+            quantity = 0;
+        med.setQuantity(quantity);
+        medNameTextView.setText(med.getName() + " ilość leku = " + med.getQuantity());
+        MedicineList.setMedicine(medIndex, med);
+        writeArray(MedicineList.getMedicineList());
+    }
+
+    private void writeArray(List<Medicine> medicineList) {
+        File f = new File(getFilesDir(), "medicine_list.srl");
+        try {
+            FileOutputStream fos = new FileOutputStream(f);
+            ObjectOutputStream objectwrite = new ObjectOutputStream(fos);
+            objectwrite.writeObject(medicineList);
+            fos.close();
+
+            if (!f.exists()) {
+                f.mkdirs();
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void playSound(Context context, Uri alert) {
