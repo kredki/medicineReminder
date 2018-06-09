@@ -93,4 +93,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MyMedsActivity.class);
         startActivity(intent);
     }
+    public void changeToBarcodeScenner(View view) {
+        Intent intent = new Intent(this, BarcodeScannerActivity.class);
+        startActivity(intent);
+    }
 }
